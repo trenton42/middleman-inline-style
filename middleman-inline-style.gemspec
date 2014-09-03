@@ -1,23 +1,23 @@
 # coding: utf-8
-lib = File.expand_path('../lib', __FILE__)
-$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'middleman/inline/style/version'
+$:.push File.expand_path("../lib", __FILE__)
+require "middleman-inline-style/version"
 
 Gem::Specification.new do |spec|
   spec.name          = "middleman-inline-style"
-  spec.version       = Middleman::Inline::Style::VERSION
+  spec.version       = MiddlemanInlineStyle::VERSION
   spec.authors       = ["Trenton Broughton"]
-  spec.email         = ["trenton@devpie.com"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
+  spec.email         = ["trenton@ikso.us"]
+  spec.summary       = "Middleman extension to inline your css"
+  spec.description   = "Inline the css in your templates. Useful for developing email templates"
   spec.homepage      = ""
   spec.license       = "MIT"
 
-  spec.files         = `git ls-files -z`.split("\x0")
+  spec.files         = `git ls-files`.split("\n")
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
 
   spec.add_development_dependency "bundler", "~> 1.6"
   spec.add_development_dependency "rake"
+  spec.add_dependency "inline-style"
 end
