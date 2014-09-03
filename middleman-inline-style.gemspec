@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["trenton@ikso.us"]
   spec.summary       = "Middleman extension to inline your css"
   spec.description   = "Inline the css in your templates. Useful for developing email templates"
-  spec.homepage      = ""
+  spec.homepage      = "https://github.com/trenton42/middleman-inline-style"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split("\n")
