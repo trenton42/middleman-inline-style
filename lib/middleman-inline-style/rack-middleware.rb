@@ -26,6 +26,7 @@ module MiddlemanInlineStyle::Rack
       return response unless @paths === env['PATH_INFO']
       
       status, headers, body = response
+      return response unless headers['Content-Type'] == 'text/html'
       newbody = []
       body.each { |str| newbody << str }
       newbody = newbody.join('')
