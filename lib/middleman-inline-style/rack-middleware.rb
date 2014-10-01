@@ -2,7 +2,7 @@ require "inline-style"
 
 module MiddlemanInlineStyle::Rack
   class Middleware
-    # @param [Hash] opts Middlewar options
+    # @param [Hash] opts Middleware options
     #
     # @option opts [String] :stylesheets_path (env['DOCUMENT_ROOT']) 
     #       Stylesheets root path or app's public directory where the stylesheets are to be found
@@ -26,11 +26,11 @@ module MiddlemanInlineStyle::Rack
       return response unless @paths === env['PATH_INFO']
       
       status, headers, body = response
-      return response unless headers['Content-Type'].start_with?('text/html')
+      return response unless headers['Content-Type'] == nil or headers['Content-Type'].start_with?('text/html')
       newbody = []
       body.each { |str| newbody << str }
       newbody = newbody.join('')
-      newbody = InlineStyle.process(newbody, {:stylesheets_path => env['DOCUMENT_ROOT']}.merge(@opts))
+      newbody = InlineStyle.process(newbody, {:stylesheets_path => "./build/"}.merge(@opts))
       headers['Content-Length'] = Rack::Utils.bytesize(newbody).to_s
       [status, headers, [newbody]]
     end
