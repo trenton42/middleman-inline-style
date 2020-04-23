@@ -31,7 +31,7 @@ module MiddlemanInlineStyle::Rack
       body.each { |str| newbody << str }
       newbody = newbody.join('')
       newbody = InlineStyle.process(newbody, {:stylesheets_path => "./build/"}.merge(@opts))
-      headers['Content-Length'] = Rack::Utils.bytesize(newbody).to_s
+      headers['Content-Length'] = newbody.bytesize.to_s
       [status, headers, [newbody]]
     end
   end
